@@ -21,7 +21,9 @@ public class EmployerController {
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
+        model.addAttribute("title", "Create Employer");
         model.addAttribute(new Employer());
+        model.addAttribute("employers", employerRepository.findAll());
         return "employers/add";
     }
 
@@ -30,17 +32,28 @@ public class EmployerController {
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "Create Employer");
             return "employers/add";
         }
 
-        employerRepository.save(newEmployer);
-        return "redirect:";
+        Boolean doesEmployerExist=false;
+        var allEmployers = employerRepository.findAll();
+        for (Employer employerFromDb : allEmployers) {
+            if (employerFromDb.getName().equals(newEmployer.getName())){
+                doesEmployerExist = true;
+            }
+        }
+            if(doesEmployerExist=false) {
+                employerRepository.save(newEmployer);
+            }
+            return "redirect:";
+
     }
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
-        Optional optEmployer = null;
+        Optional optEmployer = employerRepository.findById(employerId);
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();
             model.addAttribute("employer", employer);
