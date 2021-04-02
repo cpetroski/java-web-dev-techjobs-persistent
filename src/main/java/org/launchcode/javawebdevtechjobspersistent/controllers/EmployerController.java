@@ -43,7 +43,7 @@ public class EmployerController {
                 doesEmployerExist = true;
             }
         }
-            if(doesEmployerExist=false) {
+            if(doesEmployerExist==false) {
                 employerRepository.save(newEmployer);
             }
             return "redirect:";

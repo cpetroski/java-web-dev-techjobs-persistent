@@ -1,12 +1,12 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Skill extends AbstractEntity {
 
-    @Max(value = 255, message = "Max description length is 255 characters.")
+    @Size(min= 3, max = 255, message = "Max description length is 255 characters.")
     private String description;
 
     public Skill() {}

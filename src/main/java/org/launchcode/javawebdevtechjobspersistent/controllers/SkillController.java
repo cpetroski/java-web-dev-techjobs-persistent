@@ -50,7 +50,7 @@ public class SkillController {
                 doesSkillExist = true;
             }
         }
-        if(doesSkillExist=false) {
+        if(doesSkillExist==false) {
             skillRepository.save(newSkill);
         }
         return "redirect:";
