@@ -51,7 +51,7 @@
                 </p>
                 <p>
                     Skills:
-                    <ul th:each="skill : ${job.skills}">
+                    <ul th:each="skill : ${job.skill}">
                       <li>
                           <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
                       </li>
