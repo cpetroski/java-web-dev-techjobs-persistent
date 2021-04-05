@@ -3,7 +3,6 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +12,7 @@ public class Job extends AbstractEntity {
     private Employer employer;
 
     @ManyToMany
-    private List<Skill> skill= new ArrayList<>();
+    private List<Skill> skill;
 
     public Job() {
     }
