@@ -15,6 +15,7 @@ DROP TABLE job
 
 
 ## Part 4: Test it with SQL
+SELECT *
 FROM skill
 INNER JOIN job_skill ON skill.id=job_skill.skill_id
 WHERE jobs_id IS NOT NULL
